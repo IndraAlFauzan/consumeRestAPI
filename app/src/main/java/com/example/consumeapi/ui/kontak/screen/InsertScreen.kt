@@ -26,6 +26,7 @@ import com.example.consumeapi.navigation.DestinasiNavigasi
 
 import com.example.consumeapi.ui.PenyediaViewModel
 import com.example.consumeapi.ui.TopAppBarKontak
+import com.example.consumeapi.ui.home.viewmodel.HomeViewModel
 import com.example.consumeapi.ui.kontak.InserViewModel
 import com.example.consumeapi.ui.kontak.InsertUiEvent
 import com.example.consumeapi.ui.kontak.InsertUiState
@@ -42,7 +43,7 @@ object DestinasiEntry : DestinasiNavigasi {
 fun EntryKontakScreen(
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: InserViewModel = viewModel(factory = PenyediaViewModel.Factory)
+    viewModel: InserViewModel = viewModel(factory = PenyediaViewModel.Factory),
 ) {
     val coroutineScope = rememberCoroutineScope()
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
