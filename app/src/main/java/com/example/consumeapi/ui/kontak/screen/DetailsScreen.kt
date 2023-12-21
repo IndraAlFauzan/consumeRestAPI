@@ -49,7 +49,7 @@ object DetailsDestination : DestinasiNavigasi {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailsScreen(
-
+    onEditClick: (Int) -> Unit,
     modifier: Modifier = Modifier,
     navigateBack: () -> Unit,
     detailsViewModel: DetailsViewModel = viewModel(factory = PenyediaViewModel.Factory)
@@ -77,6 +77,7 @@ fun DetailsScreen(
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize(),
+            onEditClick = onEditClick
         )
     }
 }
@@ -87,6 +88,7 @@ fun DetailStatus(
     kontakUIState: DetaiksKontakUiState,
     retryAction: () -> Unit,
     modifier: Modifier = Modifier,
+    onEditClick: (Int) -> Unit
 ) {
 
     when (kontakUIState) {
@@ -95,6 +97,9 @@ fun DetailStatus(
             KontakLayout(
                 kontak = kontakUIState.kontak,
                 modifier = modifier.padding(16.dp),
+                onEditClick = {
+                    onEditClick(it)
+                }
             )
         }
 
@@ -111,37 +116,6 @@ fun DetailStatus(
 
 }
 
-/**
- * The home screen displaying the loading message.
- */
-@Composable
-fun OnLoading(modifier: Modifier = Modifier) {
-    Image(
-        modifier = modifier.size(200.dp),
-        painter = painterResource(R.drawable.loading_img),
-        contentDescription = stringResource(R.string.loading)
-    )
-}
-
-/**
- * The home screen displaying error message with re-attempt button.
- */
-@Composable
-fun OnError(retryAction: () -> Unit, modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Image(
-            painter = painterResource(id = R.drawable.ic_connection_error), contentDescription = ""
-        )
-        Text(text = stringResource(R.string.loading_failed), modifier = Modifier.padding(16.dp))
-        Button(onClick = retryAction) {
-            Text(stringResource(R.string.retry))
-        }
-    }
-}
 
 @Composable
 fun KontakLayout(

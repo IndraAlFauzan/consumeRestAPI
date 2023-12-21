@@ -10,10 +10,12 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.consumeapi.ui.home.screen.DestinasiHome
 import com.example.consumeapi.ui.home.screen.HomeScreen
+import com.example.consumeapi.ui.kontak.screen.DestinasiEntry
 import com.example.consumeapi.ui.kontak.screen.DetailsDestination
 import com.example.consumeapi.ui.kontak.screen.DetailsScreen
-import com.example.consumeapi.ui.kontak.screen.DestinasiEntry
+import com.example.consumeapi.ui.kontak.screen.EditDestination
 import com.example.consumeapi.ui.kontak.screen.EntryKontakScreen
+import com.example.consumeapi.ui.kontak.screen.ItemEditScreen
 
 @Composable
 fun PengelolaHalaman(navController: NavHostController = rememberNavController()) {
@@ -25,13 +27,12 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
 
         ) {
 
-
         composable(DestinasiHome.route) {
             HomeScreen(navigateToItemEntry = {
                 navController.navigate(DestinasiEntry.route)
             },
                 onDetailClick = { itemId ->
-                  navController.navigate("${DetailsDestination.route}/$itemId")
+                    navController.navigate("${DetailsDestination.route}/$itemId")
                     println(itemId)
                 })
         }
@@ -58,10 +59,30 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
                 DetailsScreen(
                     navigateBack = {
                         navController.navigateUp()
+                    },
+                    onEditClick = { itemId ->
+                        navController.navigate("${EditDestination.route}/$itemId")
+                        println(itemId)
                     }
 
                 )
             }
+        }
+
+        composable(
+            EditDestination.routeWithArgs,
+            arguments = listOf(navArgument(EditDestination.kontakId) {
+                type = NavType.IntType
+            })
+        ) {
+            ItemEditScreen(navigateBack = { navController.popBackStack() },
+                onNavigateUp = {
+                    navController.navigate(DestinasiHome.route) {
+                        popUpTo(DestinasiHome.route) {
+                            inclusive = true
+                        }
+                    }
+                })
         }
 
     }

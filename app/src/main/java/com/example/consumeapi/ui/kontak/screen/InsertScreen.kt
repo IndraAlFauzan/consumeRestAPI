@@ -56,7 +56,7 @@ fun EntryKontakScreen(
                 navigateUp = navigateBack
             )
         }) { innerPadding ->
-        EntrySiswaBody(
+        EntryKontakBody(
             insertUiState = viewModel.insertKontakState,
             onSiswaValueChange = viewModel::updateInsertKontakState,
             onSaveClick = {
@@ -74,7 +74,7 @@ fun EntryKontakScreen(
 }
 
 @Composable
-fun EntrySiswaBody(
+fun EntryKontakBody(
     insertUiState: InsertUiState,
     onSiswaValueChange: (InsertUiEvent) -> Unit,
     onSaveClick: () -> Unit,

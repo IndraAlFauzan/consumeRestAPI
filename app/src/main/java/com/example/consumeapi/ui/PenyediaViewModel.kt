@@ -8,6 +8,7 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.consumeapi.KontakAplikation
 import com.example.consumeapi.ui.home.viewmodel.HomeViewModel
 import com.example.consumeapi.ui.kontak.viewmodel.DetailsViewModel
+import com.example.consumeapi.ui.kontak.viewmodel.EditViewModel
 import com.example.consumeapi.ui.kontak.viewmodel.InserViewModel
 
 
@@ -29,6 +30,13 @@ object PenyediaViewModel {
                 kontakRepository = apkikasiKontak().container.kontakRepository
             )
 
+        }
+
+        initializer {
+            EditViewModel(
+                createSavedStateHandle(),
+                kontakRepository = apkikasiKontak().container.kontakRepository
+            )
         }
 
     }

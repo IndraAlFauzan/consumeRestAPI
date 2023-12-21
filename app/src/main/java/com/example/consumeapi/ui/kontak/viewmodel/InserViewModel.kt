@@ -34,7 +34,7 @@ data class InsertUiState(
     val insertUiEvent: InsertUiEvent = InsertUiEvent(),
 )
 
-data class InsertUiEvent(
+data class  InsertUiEvent(
     val id: Int = 0,
     val nama: String = "",
     val alamat: String = "",
@@ -49,9 +49,14 @@ fun InsertUiEvent.toKontak(): Kontak = Kontak(
 
 )
 
+fun Kontak.toUiStateKontak(): InsertUiState = InsertUiState(
+    insertUiEvent = toInsertUiEvent(),
+)
+
 fun Kontak.toInsertUiEvent(): InsertUiEvent = InsertUiEvent(
     id = id,
     nama = nama,
     alamat = email,
     nohp = nohp,
 )
+
