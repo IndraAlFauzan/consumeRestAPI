@@ -1,4 +1,4 @@
-package com.example.consumeapi.ui.kontak
+package com.example.consumeapi.ui.kontak.viewmodel
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -47,4 +47,11 @@ fun InsertUiEvent.toKontak(): Kontak = Kontak(
     email = alamat,
     nohp = nohp,
 
+)
+
+fun Kontak.toInsertUiEvent(): InsertUiEvent = InsertUiEvent(
+    id = id,
+    nama = nama,
+    alamat = email,
+    nohp = nohp,
 )

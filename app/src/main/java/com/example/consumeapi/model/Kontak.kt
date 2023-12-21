@@ -10,6 +10,6 @@ data class Kontak(
     val nama: String,
     @SerialName(value = "email")
     val email: String,
-    @SerialName(value = "no_hp")
+    @SerialName(value = "nohp")
     val nohp: String,
 )

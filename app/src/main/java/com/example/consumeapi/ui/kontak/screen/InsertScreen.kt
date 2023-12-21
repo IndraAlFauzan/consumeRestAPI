@@ -26,10 +26,9 @@ import com.example.consumeapi.navigation.DestinasiNavigasi
 
 import com.example.consumeapi.ui.PenyediaViewModel
 import com.example.consumeapi.ui.TopAppBarKontak
-import com.example.consumeapi.ui.home.viewmodel.HomeViewModel
-import com.example.consumeapi.ui.kontak.InserViewModel
-import com.example.consumeapi.ui.kontak.InsertUiEvent
-import com.example.consumeapi.ui.kontak.InsertUiState
+import com.example.consumeapi.ui.kontak.viewmodel.InserViewModel
+import com.example.consumeapi.ui.kontak.viewmodel.InsertUiEvent
+import com.example.consumeapi.ui.kontak.viewmodel.InsertUiState
 import kotlinx.coroutines.launch
 
 
